@@ -1,6 +1,87 @@
-/* style.css */
+/* style.css - Enhanced for Level 3 Cave Visuals */
+
+@keyframes caveGlow {
+    0% { box-shadow: 0 0 20px rgba(255, 107, 185, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(255, 107, 185, 0.6); }
+    100% { box-shadow: 0 0 20px rgba(255, 107, 185, 0.2); }
+}
+
+@keyframes fairyFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(2deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes crystalPulse {
+    0% { filter: brightness(1) drop-shadow(0 0 5px #ff6bb9); }
+    50% { filter: brightness(1.3) drop-shadow(0 0 15px #ff6bb9); }
+    100% { filter: brightness(1) drop-shadow(0 0 5px #ff6bb9); }
+}
+
 body {
-    background: #222;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2a 50%, #0a0a0f 100%);
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Cave atmosphere overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Game canvas enhancements */
+canvas {
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 107, 185, 0.3);
+}
+
+/* Crystal fusion effect for UI elements */
+.crystal-fusion {
+    animation: caveGlow 2s ease-in-out infinite;
+    color: #ff9bcc;
+    text-shadow: 0 0 10px #ff6bb9;
+}
+
+/* Fairy-like floating animation for UI elements */
+.fairy-float {
+    animation: fairyFloat 4s ease-in-out infinite;
+}
+
+/* Crystal pulse effect */
+.crystal-pulse {
+    animation: crystalPulse 1.5s ease-in-out infinite;
+}
+
+/* Dark cave vignette overlay */
+.cave-vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Performance optimization class */
+.performance-mode {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }
